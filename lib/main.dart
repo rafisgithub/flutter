@@ -1,12 +1,25 @@
-import 'package:flutter/material.dart';
+/* 
+Most impotant Widgets
+1)App level Widget
+->MaterialApp/CupertinoApp
+property:
+title:
+theme:
+home:
+routes:
 
-void main(){
-  runApp(MaterialApp(
-    title: "First app",
-    home: Scaffold(
-      body: Center(
-        child: Text("Hello world.This is my first flutter app")),
-    )
-  ));
-}
+2)Page level widget
+->Scaffold/cupertinoPageScaffold
+properties:
+AppBar:
+body:
+bottomNavigationBar:
+drawer:
+backgroundColor:
+floatingActionButton:
+bottomSheet
+
+*/
+
+
 
