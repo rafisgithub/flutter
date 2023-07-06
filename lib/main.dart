@@ -1,52 +1,32 @@
-import 'dart:ffi';
+/* 
+Widgets
+1)Layout type Widgets
+->Container
+->Row
+->Column
+->ListView
+->Stack
+->GridView
 
-import 'package:flutter/material.dart';
+2)Content container Type Widget
+->Stack
+->Card
 
-void main() {
-  runApp(MaterialApp(
-    title: "first app",
-    home: Scaffold(body: MyApp2()),
-  ));
-}
+3)Repetitive Type Widget
+->LIstView
+->GridView
+->ListTile
 
-class MyApp2 extends StatefulWidget {
-  const MyApp2({super.key});
+4)Content Type Widget
+->Text
+->Image
+->Icon
 
-  @override
-  State<MyApp2> createState() => _MyApp2State();
-}
-
-class _MyApp2State extends State<MyApp2> {
-  String txt = "";
-  @override
-  void initState() {
-    txt = "Welcome statefull widget";
-    super.initState();
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      child: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-          Text(txt),
-         ElevatedButton(onPressed: (){
-          
-          setState(() {
-            txt = "I am statefull wigdet";
-          });
-          print("OnPressed $txt");
-         }, 
-         child: Text("Change")
-         )
-        ]),
-      ),
-    );
-  }
-}
+5)User Input Type Widget
+->TextField
+->RasedButton/FlatButton/EvaluatedButton
+->InkWell
+->GestureDetector
 
 
-
-
+*/
