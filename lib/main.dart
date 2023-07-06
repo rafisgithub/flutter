@@ -2,64 +2,51 @@ import 'dart:ffi';
 
 import 'package:flutter/material.dart';
 
-void main(){
-  runApp(
-    MaterialApp(
-      title: "first app",
-      home: Scaffold(
-        body: MyApp()
-      ),
-    )
-  );
+void main() {
+  runApp(MaterialApp(
+    title: "first app",
+    home: Scaffold(body: MyApp2()),
+  ));
 }
 
-class MyApp extends StatelessWidget {
+class MyApp2 extends StatefulWidget {
+  const MyApp2({super.key});
+
   @override
-  Widget build(BuildContext context) {
-    
-    return Center(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-            CustomButton("Create"),
-            SizedBox(
-              height: 10,
-              ),
-             CustomButton("Read"),
-             SizedBox(
-              height: 10,
-             ),
-              CustomButton("update"),
-              SizedBox(
-                height: 10,
-              ),
-               CustomButton("delete"),
-          ],)
-        );
-    
+  State<MyApp2> createState() => _MyApp2State();
+}
+
+class _MyApp2State extends State<MyApp2> {
+  String txt = "";
+  @override
+  void initState() {
+    txt = "Welcome statefull widget";
+    super.initState();
   }
-}
 
-
-class CustomButton extends StatelessWidget {
-  final String title;
-  CustomButton(this.title);
   @override
   Widget build(BuildContext context) {
-    return InkWell(
-      onTap: () {
-        print("onTap");
-      },
-      child: Container(
-        height: 40,
-        width: 100,
-        decoration: BoxDecoration(
-          shape: BoxShape.rectangle,
-          color: Colors.blue
-        ),
-        child: Center(child: Text(title)),
+    return Container(
+      child: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+          Text(txt),
+         ElevatedButton(onPressed: (){
+          
+          setState(() {
+            txt = "I am statefull wigdet";
+          });
+          print("OnPressed $txt");
+         }, 
+         child: Text("Change")
+         )
+        ]),
       ),
     );
   }
-    
-  }
+}
+
+
+
+
