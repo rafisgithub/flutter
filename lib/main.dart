@@ -1,25 +1,23 @@
-/* 
-Most impotant Widgets
-1)App level Widget
-->MaterialApp/CupertinoApp
-property:
-title:
-theme:
-home:
-routes:
+import 'package:flutter/material.dart';
 
-2)Page level widget
-->Scaffold/cupertinoPageScaffold
-properties:
-AppBar:
-body:
-bottomNavigationBar:
-drawer:
-backgroundColor:
-floatingActionButton:
-bottomSheet
+void main(){
+  runApp(
+    MaterialApp(
+      title: "first app",
+      home: Scaffold(
+        body: MyApp()
+      ),
+    )
+  );
+}
 
-*/
-
-
-
+class MyApp extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    
+    return Center(
+          child: Text("Hello world"),
+        );
+    
+  }
+}
