@@ -1,32 +1,37 @@
-/* 
-Widgets
-1)Layout type Widgets
-->Container
-->Row
-->Column
-->ListView
-->Stack
-->GridView
+import 'package:flutter/material.dart';
 
-2)Content container Type Widget
-->Stack
-->Card
+void main(){
+  runApp(MaterialApp(
+    title: 'container',
+    home: Scaffold(
+      body: MyApp(),
+    ),
+  ));
+}
 
-3)Repetitive Type Widget
-->LIstView
-->GridView
-->ListTile
+class MyApp extends StatelessWidget {
 
-4)Content Type Widget
-->Text
-->Image
-->Icon
-
-5)User Input Type Widget
-->TextField
-->RasedButton/FlatButton/EvaluatedButton
-->InkWell
-->GestureDetector
-
-
-*/
+  @override
+  Widget build(BuildContext context) {
+    return Center(
+      child: Container(
+        
+        height: 300,
+        width: 300,
+        child: Text("This is a Container"),
+        alignment: Alignment.center,
+        margin: EdgeInsets.all(30),
+        padding: EdgeInsets.all(30),
+        decoration: BoxDecoration(
+          color: Color.fromARGB(255, 171, 222, 172),
+          shape: BoxShape.circle,
+          border: Border.all(
+            color: Color.fromARGB(255, 40, 10, 238),
+            width: 10
+          )
+        ),
+        // transform: Matrix4.rotationY(.5),
+      ),
+    );
+  }
+}
