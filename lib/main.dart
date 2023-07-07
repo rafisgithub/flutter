@@ -2,45 +2,37 @@ import 'package:flutter/material.dart';
 
 void main(){
   runApp(MaterialApp(
-    title: "GridView Exampla",
+    title: "Card",
     home: Scaffold(
-      appBar: AppBar(title: Text("All about GridView")),
+      appBar: AppBar(
+        title: Text("All about Card widget"),
+        ),
       body: MyApp(),
     ),
   ));
 }
 
-class MyApp extends StatefulWidget {
+class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
   @override
-  State<MyApp> createState() => _MyAppState();
-}
-
-class _MyAppState extends State<MyApp> {
-  List<int> list = [];
-  @override
-  void initState(){
-    for(int i =0;i<=50;i++){
-      list.add(i);
-    }
-    super.initState();
-  }
   Widget build(BuildContext context) {
-    return GridView.builder(
-      itemCount: list.length,
-      gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 3),
-      itemBuilder: (BuildContext cxt, int index){
-        return Padding(
-          padding: const EdgeInsets.all(8.0),
-          child: Container(
-            color: Color.fromARGB(255, 13, 134, 17),
-            alignment: Alignment.center,
-            child: Text('${list[index]}'),
-          ),
-        );
-      },
-    );
+    return Card(
+        color: Colors.blue,
+        elevation: 10,
+        shadowColor: Colors.black,
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(50),
+          side: BorderSide(color: Colors.red,
+          width: 3)
+        ),
       
+       child: Container(
+        height: 300,
+        width: 300,
+ 
+       ),
+   
+    );
   }
 }
