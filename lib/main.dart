@@ -5,7 +5,7 @@ void main(){
     title: "Card",
     home: Scaffold(
       appBar: AppBar(
-        title: Text("All about Card widget"),
+        title: Text("All about Text widget"),
         ),
       body: MyApp(),
     ),
@@ -13,26 +13,32 @@ void main(){
 }
 
 class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+  
 
   @override
   Widget build(BuildContext context) {
-    return Card(
-        color: Colors.blue,
-        elevation: 10,
-        shadowColor: Colors.black,
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(50),
-          side: BorderSide(color: Colors.red,
-          width: 3)
-        ),
-      
-       child: Container(
-        height: 300,
+    return Center(
+      child: Container(
         width: 300,
- 
-       ),
-   
+        height: 300,
+        color: Color.fromARGB(221, 14, 6, 6),
+        child: Text(
+          "Hi this Text Widgets examaple.We will discuss here all about Text widget and it's properties",
+          textAlign: TextAlign.center,
+          textScaleFactor: 2,
+          // overflow: TextOverflow.ellipsis,
+          maxLines: 4,
+          style: TextStyle(
+            color: Colors.white,
+            fontSize: 11,
+            fontStyle: FontStyle.italic,
+            fontWeight: FontWeight.w700,
+            letterSpacing: 2,
+            wordSpacing: 10,
+       
+          ),
+        ),
+      ),
     );
   }
 }
