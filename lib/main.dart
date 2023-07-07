@@ -18,46 +18,29 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
+  List<int> list = [];
   @override
+  void initState(){
+    for(int i =0;i<=50;i++){
+      list.add(i);
+    }
+    super.initState();
+  }
   Widget build(BuildContext context) {
-    return GridView.count(
-      crossAxisCount: 3,
-      mainAxisSpacing: 10,
-      crossAxisSpacing: 10,
-      children: [
-        Container(
-          color: Colors.green,
-          child: Text("Hi"),
-          alignment: Alignment.center,
-        ),
-        Container(
-          color: Colors.green,
-          child: Text("Hi"),
-          alignment: Alignment.center,
-        ),
-        Container(
-          color: Colors.green,
-          child: Text("Hi"),
-          alignment: Alignment.center,
-        ),
-        Container(
-          color: Colors.green,
-          child: Text("Hi"),
-          alignment: Alignment.center,
-        ),
-        Container(
-          color: Colors.green,
-          child: Text("Hi"),
-          alignment: Alignment.center,
-        ),
-
-        Container(
-          color: Colors.green,
-          child: Text("Hi"),
-          alignment: Alignment.center,
-        ),
-     
-      ],
-      );
+    return GridView.builder(
+      itemCount: list.length,
+      gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 3),
+      itemBuilder: (BuildContext cxt, int index){
+        return Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: Container(
+            color: Color.fromARGB(255, 13, 134, 17),
+            alignment: Alignment.center,
+            child: Text('${list[index]}'),
+          ),
+        );
+      },
+    );
+      
   }
 }
