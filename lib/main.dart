@@ -1,43 +1,35 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 
-void main(){
+void main() {
   runApp(MaterialApp(
-    title: "Card",
+    debugShowCheckedModeBanner: false,
+    title: "image widget",
+    theme: ThemeData(
+      primarySwatch: Colors.pink,
+      visualDensity: VisualDensity.adaptivePlatformDensity
+    ),
     home: Scaffold(
-      appBar: AppBar(
-        title: Text("All about Text widget"),
-        ),
+      appBar: AppBar(title: Text("All about image Widget")),
       body: MyApp(),
     ),
   ));
 }
 
 class MyApp extends StatelessWidget {
-  
-
   @override
   Widget build(BuildContext context) {
     return Center(
       child: Container(
-        width: 300,
         height: 300,
-        color: Color.fromARGB(221, 14, 6, 6),
-        child: Text(
-          "Hi this Text Widgets examaple.We will discuss here all about Text widget and it's properties",
-          textAlign: TextAlign.center,
-          textScaleFactor: 2,
-          // overflow: TextOverflow.ellipsis,
-          maxLines: 4,
-          style: TextStyle(
-            color: Colors.white,
-            fontSize: 11,
-            fontStyle: FontStyle.italic,
-            fontWeight: FontWeight.w700,
-            letterSpacing: 2,
-            wordSpacing: 10,
-       
-          ),
-        ),
+        width: 300,
+        color: Colors.grey,
+        // child: Image.network("https://picsum.photos/300/300"),
+        // child: Image.asset('assets/images/Rafi.jpg'),
+        // child: Image.file(File('/File Manager/Images/Download/apu.jpg')), problem ase
+        // filepath
+        // child: Image.memory(),problem ase
       ),
     );
   }
