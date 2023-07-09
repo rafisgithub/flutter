@@ -1,48 +1,79 @@
 import 'package:flutter/material.dart';
 
-void main() {
+void main(){
+
   runApp(MaterialApp(
-    title: "Icon",
+    title: "TextField",
+    theme: ThemeData(
+      primarySwatch: Colors.amber,
+    ),
     home: Scaffold(
-      appBar: AppBar(title: Text("This is about the Icon widget")),
-      body: MyApp(),
+      appBar: AppBar(title: Text("All about TextField")),
+      backgroundColor: Color.fromARGB(255, 93, 76, 76),
+      body: MYApp(),
     ),
   ));
 }
 
-class MyApp extends StatefulWidget {
+
+class MYApp extends StatefulWidget {
+  const MYApp({Key? key}) : super(key: key);
+
   @override
-  State<MyApp> createState() => _MyAppState();
+  State<MYApp> createState() => _MYAppState();
 }
 
-class _MyAppState extends State<MyApp> {
-  int volume = 0;
+class _MYAppState extends State<MYApp> {
+  String  txt = '';
+  bool _secure = true;
   @override
   Widget build(BuildContext context) {
-    return Center(
-      child: Container(
-        width: 300,
-        height: 300,
-        color: Colors.white,
-        child: Column(
-          children: [
-            Icon(
-              Icons.volume_up,
-              size: 50,
-              color: Colors.blue,
+    return Container(
+      padding: EdgeInsets.all(16),
+      child: Column(
+        children: [
+          TextField(
+            decoration: InputDecoration(
+              hintText: 'Enter your name',
+              labelText: 'Name',
+              labelStyle: TextStyle(
+                color: Colors.white,
+                fontSize: 18,
+              ),
+              hintStyle: TextStyle(
+                color: Colors.white,
+                fontSize: 15,
+              ),
+              border: OutlineInputBorder(
+                borderRadius: BorderRadius.circular(15),
+              ),
+              prefixIcon: Icon(Icons.account_circle),
+              suffix: IconButton(
+                icon:Icon(_secure?Icons.remove_red_eye:Icons.security),
+                onPressed: () {
+                  setState(() {
+                    _secure = !_secure;
+                  });
+                },
+                ),
+              errorText: txt.isEmpty?'Text field is empty':null
             ),
-            IconButton(
-              icon: Icon(Icons.volume_up),
-              onPressed: () {
-                print('on pressed');
-               setState(() {
-                  volume += 1;
-               });
-              },
-            ),
-            Text('$volume'),
-          ],
-        ),
+            keyboardType: TextInputType.text,
+            obscureText: _secure,
+            obscuringCharacter: '*',
+            maxLength: 10,
+            // maxLines: 2,
+            onChanged: (value) {
+              txt = value;
+            },
+            onSubmitted: (value){
+              setState(() {
+                txt = value;
+              });
+              print(value);
+            },
+          )
+        ],
       ),
     );
   }
