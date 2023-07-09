@@ -1,35 +1,48 @@
-import 'dart:io';
-
 import 'package:flutter/material.dart';
 
 void main() {
   runApp(MaterialApp(
-    debugShowCheckedModeBanner: false,
-    title: "image widget",
-    theme: ThemeData(
-      primarySwatch: Colors.pink,
-      visualDensity: VisualDensity.adaptivePlatformDensity
-    ),
+    title: "Icon",
     home: Scaffold(
-      appBar: AppBar(title: Text("All about image Widget")),
+      appBar: AppBar(title: Text("This is about the Icon widget")),
       body: MyApp(),
     ),
   ));
 }
 
-class MyApp extends StatelessWidget {
+class MyApp extends StatefulWidget {
+  @override
+  State<MyApp> createState() => _MyAppState();
+}
+
+class _MyAppState extends State<MyApp> {
+  int volume = 0;
   @override
   Widget build(BuildContext context) {
     return Center(
       child: Container(
-        height: 300,
         width: 300,
-        color: Colors.grey,
-        // child: Image.network("https://picsum.photos/300/300"),
-        // child: Image.asset('assets/images/Rafi.jpg'),
-        // child: Image.file(File('/File Manager/Images/Download/apu.jpg')), problem ase
-        // filepath
-        // child: Image.memory(),problem ase
+        height: 300,
+        color: Colors.white,
+        child: Column(
+          children: [
+            Icon(
+              Icons.volume_up,
+              size: 50,
+              color: Colors.blue,
+            ),
+            IconButton(
+              icon: Icon(Icons.volume_up),
+              onPressed: () {
+                print('on pressed');
+               setState(() {
+                  volume += 1;
+               });
+              },
+            ),
+            Text('$volume'),
+          ],
+        ),
       ),
     );
   }
