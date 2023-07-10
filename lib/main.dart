@@ -1,74 +1,36 @@
 import 'package:flutter/material.dart';
 
 void main(){
-
   runApp(MaterialApp(
-    title: "TextField",
-    theme: ThemeData(
-      primarySwatch: Colors.blue
-    ),
+    title: 'InkWell Widget',
     home: Scaffold(
-      appBar: AppBar(title: Text("All about ButtonWidgets")),
-      backgroundColor: Color.fromARGB(255, 242, 235, 235),
-      body: MYApp(),
+      appBar: AppBar(
+        title: Text("All about InkWell widget"),
+      ),
+      body: MyApp(),
     ),
   ));
 }
-class MYApp extends StatefulWidget {
-  const MYApp({Key? key}) : super(key: key);
 
-  @override
-  State<MYApp> createState() => _MYAppState();
-}
+class MyApp extends StatelessWidget {
 
-class _MYAppState extends State<MYApp> {
+
   @override
   Widget build(BuildContext context) {
-    return SingleChildScrollView(
-      child: Container(
-        padding: EdgeInsets.all(16),
-        child: Column(
-          children: [
-            ElevatedButton(
-              onPressed: () {
-                
-              },
-              child: Text("Click me"),
-            ),
-          TextButton(
-            onPressed: (){
+    return InkWell(
+      onTap: (){
+        print('hi');
+      },
+      child: Center(
+        child: Container(
+         height: 50,
+          width: 100,
+          alignment: Alignment.center,
+          child: Text('Click me'),
+          color: Colors.lightGreen,
 
-          }, child: Text('Sign up')
-          ),
-          OutlinedButton(
-            onPressed: (){
-
-            },
-            child: Text('Log in'),
-            ),
-            ElevatedButton.icon(
-              icon: Icon(Icons.account_circle),
-              onPressed: () {
-                
-              },
-              label: Text("Account"),
-            ),
-            IconButton(
-              icon: Icon(Icons.security),
-              onPressed: () {
-                
-              },
-            ),
-            FloatingActionButton(
-              onPressed: () {
-                
-              },
-              child: Text('action'),
-            )
-          ],
         ),
       ),
     );
   }
 }
-
