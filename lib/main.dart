@@ -1,6 +1,14 @@
-import 'package:flutter/material.dart';
+import 'dart:io';
 
+import 'package:flutter/foundation.dart';
+import 'package:flutter/material.dart';
+import 'pages/stateless_widget.dart';
+import 'pages/statefull_widget.dart';
 void main(){
+  FlutterError.onError = (details){
+    FlutterError.presentError(details);
+    if(kReleaseMode) exit(1);
+  };
   runApp(MyApp());
 }
 
@@ -8,61 +16,23 @@ class MyApp extends StatelessWidget {
   const MyApp({super.key});
   @override
   Widget build(BuildContext context) {
+  
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       title: 'Stateless Widget',
       theme: ThemeData(
         primarySwatch: Colors.pink,
       ),
-      home: const MyHomePage(),
+      // home: const MyHomePage2(),
+      routes: {
+        "/" : (context) => MyHomePage(),
+        "/page2":(context) => MyHomePage2(),
+
+      },
      
     );
   }
 }
 
-class MyHomePage extends StatelessWidget {
-  const MyHomePage({super.key});
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Center(child: Text('Stateless widget',style: TextStyle(fontSize: 22),))),
-        body: Container(
-          child: Center(
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-              Custombutton('Add'),
-              SizedBox(height: 15,),
-              Custombutton('Edit'),
-              SizedBox(height: 15,),
-              Custombutton('Update'),
-              SizedBox(height: 15,),
-              Custombutton('Delete'),
-              SizedBox(height: 15,),
-             
-            ]),
-          ),
-        ),
-    );
-  }
-}
 
-class Custombutton extends StatelessWidget {
-  // const Custombutton({super.key});
-  final String title;
-  Custombutton(this.title);
 
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      height: 60,
-      width: 150,
-      decoration: BoxDecoration(
-        color: Colors.pink,
-        borderRadius: BorderRadius.circular(7),
-      ),
-     child: Center(child: Text(title,style: TextStyle(fontSize: 18),)),
-    );
-
-  }
-}
