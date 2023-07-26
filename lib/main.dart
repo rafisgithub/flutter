@@ -10,7 +10,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Container',
+      title: 'Row and Colum Widget',
       theme: ThemeData(
         primarySwatch: Colors.green,
       ),
@@ -29,32 +29,28 @@ class MyHomePage extends StatelessWidget {
       appBar: AppBar(
         title: Text('Container'),
       ),
-      body: HomePageContent(),
-    );
-  }
-}
-
-class HomePageContent extends StatelessWidget {
-  const HomePageContent({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      height: 300,
-      width: 300,
-
-      child: Center(child: Text('Hello container')),
-      padding: EdgeInsets.all(20),
-      margin: EdgeInsets.all(20),
-     decoration: BoxDecoration(
-      color: Color.fromARGB(151, 10, 37, 214),
-      borderRadius: BorderRadius.circular(10),
-      border: Border.all(
-        color: Colors.black12,
-        width: 10,
-      )
-     ),
-     transform: Matrix4.rotationZ(0.1),
+      body:Center(
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Text('Row'),
+            Text('Row'),
+            Text('Row'),
+            Text('Row'),
+          
+            Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Text("Column"),
+                Text("Column"),
+                Text("Column"),
+                Text("Column"),
+              ],
+            )
+          ],
+        ),
+        
+      ),
     );
   }
 }
