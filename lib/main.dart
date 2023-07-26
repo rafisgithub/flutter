@@ -1,38 +1,60 @@
-import 'dart:io';
-
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'pages/stateless_widget.dart';
-import 'pages/statefull_widget.dart';
+
 void main(){
-  FlutterError.onError = (details){
-    FlutterError.presentError(details);
-    if(kReleaseMode) exit(1);
-  };
   runApp(MyApp());
 }
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
+
   @override
   Widget build(BuildContext context) {
-  
     return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      title: 'Stateless Widget',
+      title: 'Container',
       theme: ThemeData(
-        primarySwatch: Colors.pink,
+        primarySwatch: Colors.green,
       ),
-      // home: const MyHomePage2(),
-      routes: {
-        "/" : (context) => MyHomePage(),
-        "/page2":(context) => MyHomePage2(),
-
-      },
-     
+      home: MyHomePage(),
+      // routes: ,
     );
   }
 }
 
+class MyHomePage extends StatelessWidget {
+  const MyHomePage({super.key});
 
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('Container'),
+      ),
+      body: HomePageContent(),
+    );
+  }
+}
 
+class HomePageContent extends StatelessWidget {
+  const HomePageContent({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      height: 300,
+      width: 300,
+
+      child: Center(child: Text('Hello container')),
+      padding: EdgeInsets.all(20),
+      margin: EdgeInsets.all(20),
+     decoration: BoxDecoration(
+      color: Color.fromARGB(151, 10, 37, 214),
+      borderRadius: BorderRadius.circular(10),
+      border: Border.all(
+        color: Colors.black12,
+        width: 10,
+      )
+     ),
+     transform: Matrix4.rotationZ(0.1),
+    );
+  }
+}
