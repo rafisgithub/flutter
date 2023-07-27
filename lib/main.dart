@@ -39,8 +39,9 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   int index = 0;
-  final items = List.generate(100, (counter) => 'Item: $counter');
-
+  // final items = List.generate(100, (counter) => 'Item: $counter');
+  // final List<int> item = List.generate(100, (index) => index);
+  List<int> items = List.generate(10, (index) => ++index);
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -117,15 +118,27 @@ class _HomePageState extends State<HomePage> {
   }
 
   // Vertical List View Builder method
-  Widget buildVerticalListView() {
-    return ListView.separated(
-      separatorBuilder: (context, index) => Divider(
-        color: Colors.black,
-      ),
+  // Widget buildVerticalListView() {
+  //   return ListView.separated(
+  //     separatorBuilder: (context, index) => Divider(
+  //       color: Colors.black,
+  //     ),
+  //     itemCount: items.length,
+  //     itemBuilder: (context, index) {
+  //       return ListTile(
+  //         title: Text(items[index]),
+  //       );
+  //     },
+  //   );
+  // }
+
+  Widget buildVerticalListView(){
+    return ListView.builder(
       itemCount: items.length,
       itemBuilder: (context, index) {
         return ListTile(
-          title: Text(items[index]),
+          title: Text("items: ${items[index]}"),
+         
         );
       },
     );
@@ -145,7 +158,7 @@ class _HomePageState extends State<HomePage> {
           width: 100,
           height: 50,
           child: ListTile(
-            title: Text(items[index]),
+            title: Text('Item : ${items[index]}'),
           ),
         );
       },
