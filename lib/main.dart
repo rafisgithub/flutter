@@ -1,167 +1,185 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/rendering.dart';
 
-/* -----------------------------------------
-                   main method
------------------------------------------*/
-void main() => runApp(MyApp());
+void main() {
+  runApp(MyApp());
+}
 
-/* -----------------------------------------
-                   MyApp
------------------------------------------*/
 class MyApp extends StatelessWidget {
-  static final String title = 'ListView Deep Dive';
-
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      title: title,
-      theme: ThemeData(primarySwatch: Colors.blue),
-      home: HomePage(),
+      title: 'Stack',
+      theme: ThemeData(
+        primarySwatch: Colors.indigo,
+      ),
+      home: HomePage(title: 'All about Stack Tutorial'),
+      // routes: ,
     );
   }
 }
 
-/* -----------------------------------------
-                  HomePage
------------------------------------------*/
 class HomePage extends StatefulWidget {
-  // final String title;
+  final String title;
 
-  // HomePage({@required this.title});
-    // PageOne({Key? key, @required this.text}) : super(key: key);
-    // HomePage({Key? key, @required this.title}) : super(key: key);
+  HomePage({Key? key, required this.title}) : super(key: key);
 
   @override
-  _HomePageState createState() => _HomePageState();
+  State<HomePage> createState() => _HomePageState();
 }
 
 class _HomePageState extends State<HomePage> {
-  int index = 0;
-  // final items = List.generate(100, (counter) => 'Item: $counter');
-  // final List<int> item = List.generate(100, (index) => index);
-  List<int> items = List.generate(10, (index) => ++index);
+  int _index = 0;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("ListView Dive Dive"),
+        title: Text("${widget.title}"),
       ),
-      body: buildListViews(),
+      body: content(),
       bottomNavigationBar: BottomNavigationBar(
-        currentIndex: index,
+        currentIndex: _index,
+        onTap: (value) {
+          setState(() {
+            _index = value;
+          });
+        },
         items: [
           BottomNavigationBarItem(
-            icon: Icon(Icons.view_list),
-            label: 'Basic',
+            icon: Icon(Icons.home),
+            label: 'Home',
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.list_alt_rounded),
-            label: 'Vertical',
+            icon: Icon(Icons.search),
+            label: 'Search',
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.line_style),
-            label: 'Horizontal',
+            icon: Icon(Icons.account_box),
+            label: 'Profile',
           ),
         ],
-        onTap: (int index) => setState(() => this.index = index),
       ),
     );
   }
 
-  Widget buildListViews() {
-    if (index == 0) {
-      return buildBasicListView();
-    } else if (index == 1) {
-      return buildVerticalListView();
-    } else if (index == 2) {
-      return buildHorizontalListView();
+  Widget content() {
+    if (_index == 0) {
+      return Screen1();
+    } else if (_index == 1) {
+      return Screen2();
+    } else if (_index == 2) {
+      return CustomListview();
     } else {
       return Container();
     }
   }
+}
 
-  // Basic List View Builder method
-  Widget buildBasicListView() {
-    return ListView(
-      children: [
-        ListTile(
-          leading: CircleAvatar(
-            backgroundColor: Colors.brown.shade800,
-            child: Text('AK'),
+class Screen1 extends StatefulWidget {
+  const Screen1({Key? key}) : super(key: key);
+
+  @override
+  State<Screen1> createState() => _Screen1State();
+}
+
+class _Screen1State extends State<Screen1> {
+  @override
+  Widget build(BuildContext context) {
+    return Center(
+      child: Stack(
+        // alignment: Alignment.centerRight,
+
+        children: [
+          Container(
+            height: 150,
+            width: 150,
+            color: Color.fromARGB(255, 142, 78, 99),
           ),
-          title: Text('Ab Karim'),
-          subtitle: Text('Flutter Developer'),
-          trailing: Icon(Icons.star, color: Colors.orange),
-        ),
-        ListTile(
-          leading: CircleAvatar(
-            backgroundColor: Colors.brown.shade800,
-            child: Text('AR'),
+          Container(
+            height: 100,
+            width: 100,
+            color: Color.fromARGB(255, 38, 101, 40),
           ),
-          title: Text('Ab Rarim'),
-          subtitle: Text('Android Developer'),
-          trailing: Icon(Icons.star, color: Colors.orange),
-        ),
-        ListTile(
-          leading: CircleAvatar(
-            backgroundColor: Colors.brown.shade800,
-            child: Text('AB'),
+          Positioned(
+            bottom: 0,
+            right: 0,
+            child: Container(
+              height: 50,
+              width: 50,
+              color: Color.fromARGB(255, 38, 101, 40),
+            ),
           ),
-          title: Text('Abul'),
-          subtitle: Text('iOS Developer'),
-          trailing: Icon(Icons.star, color: Colors.orange),
-        ),
-      ],
+        ],
+      ),
     );
   }
+}
 
-  // Vertical List View Builder method
-  // Widget buildVerticalListView() {
-  //   return ListView.separated(
-  //     separatorBuilder: (context, index) => Divider(
-  //       color: Colors.black,
-  //     ),
-  //     itemCount: items.length,
-  //     itemBuilder: (context, index) {
-  //       return ListTile(
-  //         title: Text(items[index]),
-  //       );
-  //     },
-  //   );
-  // }
+class Screen2 extends StatefulWidget {
+  const Screen2({super.key});
 
-  Widget buildVerticalListView(){
+  @override
+  State<Screen2> createState() => _Screen2State();
+}
+
+class _Screen2State extends State<Screen2> {
+  @override
+  Widget build(BuildContext context) {
+    return Center(
+      child: Stack(
+        alignment: Alignment.center,
+        children: [
+          Container(
+            width: 500,
+            height: 500,
+            color: Color.fromARGB(255, 172, 96, 121),
+          ),
+          Container(
+            width: 400,
+            height: 400,
+            color: Color.fromARGB(255, 40, 12, 162),
+          ),
+          Container(
+            width: 300,
+            height: 300,
+            color: Color.fromARGB(255, 22, 216, 61),
+          ),
+          Container(
+            width: 200,
+            height: 200,
+            color: Colors.grey,
+          ),
+          Container(
+            width: 100,
+            height: 100,
+            color: Color.fromARGB(255, 237, 152, 6),
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+class CustomListview extends StatefulWidget {
+  const CustomListview({super.key});
+
+  @override
+  State<CustomListview> createState() => _CustomListviewState();
+}
+
+class _CustomListviewState extends State<CustomListview> {
+   List<int> items = List.generate(10, (index) => ++index);
+  @override
+  Widget build(BuildContext context) {
     return ListView.builder(
       itemCount: items.length,
       itemBuilder: (context, index) {
         return ListTile(
-          title: Text("items: ${items[index]}"),
-         
+          title: Text('${items[index]} Man - ${items[index]}'),
+          trailing: Icon(Icons.balance),
         );
       },
-    );
-  }
-
-  // Horizontal List View Builder method
-  Widget buildHorizontalListView() {
-    return ListView.separated(
-      padding: EdgeInsets.all(16),
-      scrollDirection: Axis.horizontal,
-      separatorBuilder: (context, index) => Divider(
-        color: Colors.black,
-      ),
-      itemCount: items.length,
-      itemBuilder: (context, index) {
-        return Container(
-          width: 100,
-          height: 50,
-          child: ListTile(
-            title: Text('Item : ${items[index]}'),
-          ),
-        );
-      },
+      
     );
   }
 }
