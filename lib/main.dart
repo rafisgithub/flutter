@@ -14,12 +14,13 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.pink,
       ),
-      home: HomePage(),
+      home: HomePage(title: 'All about Card widget',),
     );
   }
 }
 class HomePage extends StatefulWidget {
-  const HomePage({super.key});
+  String title;
+ HomePage({Key?key,required this.title}):super(key: key);
 
   @override
   State<HomePage> createState() => _HomePageState();
@@ -30,7 +31,7 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("GridView"),
+        title: Text("${widget.title}"),
       ),
       body: Content(),
     );
@@ -45,21 +46,18 @@ class Content extends StatefulWidget {
 }
 
 class _ContentState extends State<Content> {
-  List<int> items = List.generate(20, (index) => index);
   @override
   Widget build(BuildContext context) {
-    return GridView.builder(
-      itemCount: items.length,
-      gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 3),
-      itemBuilder:(BuildContext context, int index){
-        return Padding(
-          padding: const EdgeInsets.all(8.0),
-          child: Container(
-            color: Colors.pink,
-            child: Center(child: Text('I am ${items[index]}')),
-          ),
-        );
-      } ,
+    return Card(
+      elevation: 20,
+      shadowColor: Colors.pink,
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
+      color: Colors.blue,
+      child: Container(
+        height: 300,
+        width: 300,
+      
+      ),
     );
   }
 }
