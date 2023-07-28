@@ -9,6 +9,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       title: 'GridView',
       theme: ThemeData(
         primarySwatch: Colors.pink,
@@ -44,141 +45,21 @@ class Content extends StatefulWidget {
 }
 
 class _ContentState extends State<Content> {
+  List<int> items = List.generate(20, (index) => index);
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.all(8.0),
-      child: GridView.count(
-        crossAxisCount: 4,
-        mainAxisSpacing: 10,
-        crossAxisSpacing: 10,
-        children: [
-          Container(
-            child: Center(child: Text("Hey")),
+    return GridView.builder(
+      itemCount: items.length,
+      gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 3),
+      itemBuilder:(BuildContext context, int index){
+        return Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: Container(
             color: Colors.pink,
+            child: Center(child: Text('I am ${items[index]}')),
           ),
-          Container(
-            child: Center(child: Text("Hey")),
-            color: Colors.black,
-          ),
-          Container(
-            child: Center(child: Text("Hey")),
-            color: Colors.green,
-          ),
-          Container(
-            child: Center(child: Text("Hey")),
-            color: Colors.yellow,
-          ),
-          Container(
-            child: Center(child: Text("Hey")),
-            color: Colors.amber,
-          ),
-          Container(
-            child: Center(child: Text("Hey")),
-            color: Colors.red,
-          ),
-          Container(
-            child: Center(child: Text("Hey")),
-            color: Colors.indigo,
-          ),
-          Container(
-            child: Center(child: Text("Hey")),
-            color: Colors.black87,
-          ),
-          Container(
-            child: Center(child: Text("Hey")),
-            color: Colors.pinkAccent,
-          ),
-          Container(
-            child: Center(child: Text("Hey")),
-            color: Color.fromARGB(255, 9, 230, 38),
-          ),
-          
-          Container(
-            child: Center(child: Text("Hey")),
-            color: Colors.pink,
-          ),
-          Container(
-            child: Center(child: Text("Hey")),
-            color: Colors.black,
-          ),
-          Container(
-            child: Center(child: Text("Hey")),
-            color: Colors.green,
-          ),
-          Container(
-            child: Center(child: Text("Hey")),
-            color: Colors.yellow,
-          ),
-          Container(
-            child: Center(child: Text("Hey")),
-            color: Colors.amber,
-          ),
-          Container(
-            child: Center(child: Text("Hey")),
-            color: Colors.red,
-          ),
-          Container(
-            child: Center(child: Text("Hey")),
-            color: Colors.indigo,
-          ),
-          Container(
-            child: Center(child: Text("Hey")),
-            color: Colors.black87,
-          ),
-          Container(
-            child: Center(child: Text("Hey")),
-            color: Colors.pinkAccent,
-          ),
-          Container(
-            child: Center(child: Text("Hey")),
-            color: Color.fromARGB(255, 9, 230, 38),
-          ),
-          
-          Container(
-            child: Center(child: Text("Hey")),
-            color: Colors.pink,
-          ),
-          Container(
-            child: Center(child: Text("Hey")),
-            color: Colors.black,
-          ),
-          Container(
-            child: Center(child: Text("Hey")),
-            color: Colors.green,
-          ),
-          Container(
-            child: Center(child: Text("Hey")),
-            color: Colors.yellow,
-          ),
-          Container(
-            child: Center(child: Text("Hey")),
-            color: Colors.amber,
-          ),
-          Container(
-            child: Center(child: Text("Hey")),
-            color: Colors.red,
-          ),
-          Container(
-            child: Center(child: Text("Hey")),
-            color: Colors.indigo,
-          ),
-          Container(
-            child: Center(child: Text("Hey")),
-            color: Colors.black87,
-          ),
-          Container(
-            child: Center(child: Text("Hey")),
-            color: Colors.pinkAccent,
-          ),
-          Container(
-            child: Center(child: Text("Hey")),
-            color: Color.fromARGB(255, 9, 230, 38),
-          ),
-          
-          
-        ],
-      ),
+        );
+      } ,
     );
   }
 }
