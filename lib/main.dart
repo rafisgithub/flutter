@@ -5,7 +5,7 @@ void main() {
     title: 'Slider Widget',
     theme: ThemeData(primaryColor: Colors.pink),
     home: Scaffold(
-      appBar: AppBar(title: Text('Slider Widget')),
+      appBar: AppBar(title: Text('Switch Widget')),
       body: MyApp(),
     ),
   ));
@@ -17,7 +17,7 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
-  double _sValue = 1.0;
+  var _value = false;
 
   @override
   Widget build(BuildContext context) {
@@ -25,26 +25,20 @@ class _MyAppState extends State<MyApp> {
       padding: const EdgeInsets.all(18.0),
       child: Container(
         decoration: BoxDecoration(
-          border: Border.all(color: Colors.purple),
+          border: Border.all(color: Color.fromARGB(193, 202, 3, 237)),
         ),
-        child: Column(children: [
-          Slider(
-            value: _sValue,
-            min: 0.0,
-            max: 10.0,
-            onChanged: (value) {
-              print(value);
-              setState(() {
-                _sValue = value;
-              });
-            },
-            activeColor: Colors.purple,
-            inactiveColor: Colors.black38,
-            divisions: 10,
-            label: 'Range',
-          ),
-          Text('Range Value : $_sValue')
-        ]),
+        child: Switch(
+          value: _value,
+          onChanged: (value){
+            setState(() {
+              _value = value;
+            });
+          },
+          activeColor: Colors.pink,
+          inactiveThumbColor: Colors.black,
+          activeTrackColor: Colors.pink,
+          inactiveTrackColor: Colors.grey,
+        ),
       ),
     );
   }
