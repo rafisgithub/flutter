@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 void main(){
-  runApp(const MyApp());
+  runApp(MyApp());
 }
 class MyApp extends StatefulWidget {
   const MyApp({super.key});
@@ -34,7 +34,7 @@ class _MyAppState extends State<MyApp> with SingleTickerProviderStateMixin {
           shadowColor: Colors.black,
           toolbarOpacity: 0.9,
           // toolbarHeight: 100,
-          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
+          // shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
         leading: Icon(Icons.menu),
         actions: [
           Icon(Icons.favorite),
@@ -65,6 +65,8 @@ class _MyAppState extends State<MyApp> with SingleTickerProviderStateMixin {
           ],
         ),
         ),
+
+
         body: TabBarView(
           controller: _tabController,
           children: [
@@ -77,7 +79,32 @@ class _MyAppState extends State<MyApp> with SingleTickerProviderStateMixin {
             Container(
               child: Center(child: Text("Shopping")),
             ),
-          ]
+          ],
+          ),
+          
+          
+          bottomNavigationBar: Material(
+            color: Colors.green,
+            child: TabBar(
+              
+              controller: _tabController,
+              labelColor: Colors.red,
+              unselectedLabelColor:Colors.white,
+              tabs: [
+                Tab(
+                icon: Icon(Icons.person),
+                text: 'Person',
+              ),
+              Tab(
+                icon: Icon(Icons.card_travel),
+                text: 'Travel',
+              ),
+              Tab(
+                icon: Icon(Icons.shopping_cart),
+                text: 'Shooping Card',
+              ),
+              ],
+            ),
           ),
       ),
     );
