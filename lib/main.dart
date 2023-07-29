@@ -24,33 +24,29 @@ class MyApp extends StatefulWidget {
 
 class _MyAppState extends State<MyApp> {
   // const MyApp({super.key});
-  bool _cValue = false;
+ bool _cValue = false;
 
   @override
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.all(18.0),
       child: Container(
-        height: 25,
-        width: 25,
-        decoration: BoxDecoration(
-          border: Border.all(color: Colors.purple)
-        ),
-        child: Transform.scale(
-          scale: 1,
-          child: Checkbox(
+        decoration: BoxDecoration(border: Border.all(color: Colors.purple)),
+        child: CheckboxListTile(
           value: _cValue,
-          onChanged: (status){
-            print(status);
-            setState(() {
-              _cValue = status!;
-            });
-            
+          onChanged: (value){
+           setState(() {
+             _cValue = value!;
+           });
           },
+          title: Text('Title'),
+          subtitle: Text("Subtitle"),
+          secondary: Icon(Icons.favorite),
           activeColor: Colors.green,
-          checkColor: Colors.red,
-          // tristate: true,
-          ),
+          checkColor: Colors.black38,
+          selected: _cValue,
+          // controlAffinity: ListTileControlAffinity.platform,
+          controlAffinity: ListTileControlAffinity.leading,
         ),
       ),
     );
