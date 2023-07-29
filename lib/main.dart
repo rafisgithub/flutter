@@ -17,7 +17,7 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
-  var _value = false;
+  var _slvalue = false;
 
   @override
   Widget build(BuildContext context) {
@@ -27,17 +27,20 @@ class _MyAppState extends State<MyApp> {
         decoration: BoxDecoration(
           border: Border.all(color: Color.fromARGB(193, 202, 3, 237)),
         ),
-        child: Switch(
-          value: _value,
+        child: SwitchListTile(
+          value: _slvalue,
           onChanged: (value){
             setState(() {
-              _value = value;
+              _slvalue = value;
             });
           },
           activeColor: Colors.pink,
-          inactiveThumbColor: Colors.black,
-          activeTrackColor: Colors.pink,
-          inactiveTrackColor: Colors.grey,
+          activeTrackColor: Colors.yellow,
+          inactiveTrackColor: Colors.black,
+        
+          title: Text("Switch"),
+          secondary: Icon(Icons.switch_access_shortcut),
+          selected: _slvalue,
         ),
       ),
     );
