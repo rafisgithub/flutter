@@ -1,8 +1,11 @@
+// import 'dart:js';
+
 import 'package:flutter/material.dart';
+import 'package:flutter_basics/pages/page1.dart';
 
 void main() {
   runApp(MaterialApp(
-    title: 'Slider Widget',
+    title: 'flutter Basics',
     theme: ThemeData(primaryColor: Colors.pink),
     home: Scaffold(
       appBar: AppBar(title: Text('Drawer Widget')),
@@ -25,18 +28,20 @@ void main() {
               ],
               ),
             ListTile(
-              title: Text('menu-01'),
-              trailing: Icon(Icons.arrow_back),
+              title: Text('page-01'),
+              trailing: Icon(Icons.arrow_forward),
+          
               
             ),
             ListTile(
-              title: Text('menu-01'),
-              trailing: Icon(Icons.arrow_back),
+
+              title: Text('page-01'),
+              trailing: Icon(Icons.arrow_forward),
               
             ),
             ListTile(
-              title: Text('menu-01'),
-              trailing: Icon(Icons.arrow_back),
+              title: Text('page-01'),
+              trailing: Icon(Icons.arrow_forward),
               
             ),
           ],
