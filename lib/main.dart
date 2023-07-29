@@ -41,14 +41,16 @@ class _MyAppState extends State<MyApp> {
           groupValue: _rValue, 
           onChanged: (value){
             method(value!);
-          }
+          },
+          activeColor: Colors.pink,
           ),
           Radio(
           value: 2, 
           groupValue: _rValue, 
           onChanged: (value){
              method(value!);
-          }
+          },
+          activeColor: Colors.pink,
           ),
           Radio(
           value: 3, 
@@ -56,6 +58,8 @@ class _MyAppState extends State<MyApp> {
           onChanged: (value){
             method(value!);
           }
+          ,
+          activeColor: Colors.pink,
           ),
         ]),
       ),
