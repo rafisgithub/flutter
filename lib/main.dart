@@ -25,41 +25,56 @@ class MyApp extends StatefulWidget {
 class _MyAppState extends State<MyApp> {
   // const MyApp({super.key});
   int _rValue = 0;
-  void method(int value){
-    setState(() {
-      _rValue = value!;
-    });
-  }
+  // void method(int value){
+  //   setState(() {
+  //     _rValue = value;
+  //   });
+  // }
   @override
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.all(18.0),
       child: Container(
+        decoration: BoxDecoration(border: Border.all(color: Colors.purple)),
         child: Column(children: [
-          Radio(
+         RadioListTile(
           value: 1, 
           groupValue: _rValue, 
-          onChanged: (value){
-            method(value!);
+          onChanged: (Value){
+            setState(() {
+              _rValue = Value!;
+            });
           },
-          activeColor: Colors.pink,
+          title: Text('Windows'),
+          subtitle: Text('C'),
+          secondary: Icon(Icons.window),
+          selected: _rValue == 1?true:false,
           ),
-          Radio(
+         RadioListTile(
           value: 2, 
           groupValue: _rValue, 
-          onChanged: (value){
-             method(value!);
+          onChanged: (Value){
+             setState(() {
+              _rValue = Value!;
+            });
           },
-          activeColor: Colors.pink,
+          title: Text('iOS'),
+          subtitle: Text('swift'),
+          secondary: Icon(Icons.apple),
+          selected: _rValue == 2?true:false,
           ),
-          Radio(
+         RadioListTile(
           value: 3, 
           groupValue: _rValue, 
-          onChanged: (value){
-            method(value!);
-          }
-          ,
-          activeColor: Colors.pink,
+          onChanged: (Value){
+             setState(() {
+              _rValue = Value!;
+            });
+          },
+          title: Text('Adroid'),
+          subtitle: Text('java,C++'),
+          secondary: Icon(Icons.android),
+          selected: _rValue == 3?true:false,
           ),
         ]),
       ),
