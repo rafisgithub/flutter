@@ -9,7 +9,7 @@ void main(){
     ),
     home: Scaffold(
       appBar: AppBar(
-        title: Text("Checkbox widget"),
+        title: Text("Radio Button"),
       ),
       body: MyApp(),
     ),
@@ -24,30 +24,40 @@ class MyApp extends StatefulWidget {
 
 class _MyAppState extends State<MyApp> {
   // const MyApp({super.key});
- bool _cValue = false;
-
+  int _rValue = 0;
+  void method(int value){
+    setState(() {
+      _rValue = value!;
+    });
+  }
   @override
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.all(18.0),
       child: Container(
-        decoration: BoxDecoration(border: Border.all(color: Colors.purple)),
-        child: CheckboxListTile(
-          value: _cValue,
+        child: Column(children: [
+          Radio(
+          value: 1, 
+          groupValue: _rValue, 
           onChanged: (value){
-           setState(() {
-             _cValue = value!;
-           });
-          },
-          title: Text('Title'),
-          subtitle: Text("Subtitle"),
-          secondary: Icon(Icons.favorite),
-          activeColor: Colors.green,
-          checkColor: Colors.black38,
-          selected: _cValue,
-          // controlAffinity: ListTileControlAffinity.platform,
-          controlAffinity: ListTileControlAffinity.leading,
-        ),
+            method(value!);
+          }
+          ),
+          Radio(
+          value: 2, 
+          groupValue: _rValue, 
+          onChanged: (value){
+             method(value!);
+          }
+          ),
+          Radio(
+          value: 3, 
+          groupValue: _rValue, 
+          onChanged: (value){
+            method(value!);
+          }
+          ),
+        ]),
       ),
     );
   }
